@@ -20,4 +20,4 @@ jobs:
         with:
           context: ./Technosavvy.mAPI/
           push: true
-          tags: karamveer91/github_actions:$GITHUB_JOB
+          tags: karamveer91/github_actions:${{ github.job }}

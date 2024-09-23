@@ -20,4 +20,4 @@ jobs:
         with:
           context: ./Technosavvy.mAPI/
           push: true
-          tags: karamveer91/techno_mapi:v2
+          tags: karamveer91/github_actions:v1

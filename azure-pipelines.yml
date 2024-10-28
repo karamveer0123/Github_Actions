@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+variables: 
+  - name: Dev_Environment
+    value: dev
+  - name: QA_Environment
+    value: dev
+
+stages:
+  - stage: TerraformValiate
+    jobs: 
+      - job: ErraformValidateJob
+        continueOnError: true
+        displayName: Terraform Validation Job
+        steps:
+          - task: PublishPipelineArtifact@1
+            displayName: Publish Artifacts
+            inputs:
+                 targetPath: '$(Pipeline.Workspace)/terraform-manifests'
+                 artifact: 'terraform-manifests-out'
+                 publishLocation: 'pipeline'
+          - task: TerraformInstaller@1
+            displayName: Terraform Install
+            inputs:
+              terraformVersion: 'latest'
+          
